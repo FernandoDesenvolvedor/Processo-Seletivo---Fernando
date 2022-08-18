@@ -7,6 +7,14 @@ O teste foi feito com uma arquitetura bem simples para facilitar o entendimento.
 
 Foi implementado apenas as classes relacionadas a entidade Funcionario.
 
+Ao importar pelo Git utilizar as seguintes versões para rodar o projeto:
+
+1. Tomcat 9
+2. Jdk 8
+
+Para testar aplicação acessar o serviço:
+http://localhost:8080/funcionarios/rest/funcionarios/teste
+
 # Requisitos
 
 1. Continuar o desenvolvimento do sistema
