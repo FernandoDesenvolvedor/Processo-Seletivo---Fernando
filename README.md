@@ -17,9 +17,10 @@ http://localhost:8080/funcionarios/rest/funcionarios/teste
 
 # Requisitos
 
-1. Continuar o desenvolvimento do sistema
-2. Utilizar no Front-end HTML, CSS e Javascript (Foi implementado utilizando Vue e Axios)
+1. Continuar o desenvolvimento do sistema criando a inserção/atualização/exclusão de pelo menos a entidade principal. Foi implementado somente a listagem.
+2. Utilizar no Front-end HTML, CSS e Javascript (Foi implementado utilizando Vue e Axios porém pode utilizar Javascript nativo como Fetch API ou xmlHttpRequest)
 3. Web Services RESTful em Java usando Jersey
+4. Hibernate para facilitar a persistência porém pode ser mudado para JDBC se achar mais fácil.
 4. Integração com Banco de Dados 
 5. Testes de integração
 
