@@ -3,7 +3,7 @@ O teste foi feito com uma arquitetura bem simples para facilitar o entendimento.
 É possível **exibir** todos os funcionários existentes se os dados forem inseridos manualmente na base de dados.
 
 É preciso que você implemente as funcionalidades de **inserir**, **editar** e 
-**deletar** um funcionário.
+**deletar** um funcionário. **CONTINUANDO** o projeto existente.
 
 Foi implementado apenas as classes relacionadas a entidade Funcionario.
 
@@ -17,7 +17,7 @@ http://localhost:8080/funcionarios/rest/funcionarios/teste
 
 # Requisitos
 
-1. Continuar o desenvolvimento do sistema criando a inserção/atualização/exclusão de pelo menos a entidade principal. Foi implementado somente a listagem.
+1. **Continuar** o desenvolvimento do sistema criando a inserção/atualização/exclusão de pelo menos a entidade principal. Foi implementado somente a listagem.
 2. Utilizar no Front-end HTML, CSS e Javascript (Foi implementado utilizando Vuejs 2 (Options API) e Axios porém pode utilizar Javascript nativo como Fetch API ou xmlHttpRequest)
 3. Web Services RESTful em Java usando Jersey
 4. Hibernate para facilitar a persistência porém pode ser mudado para JDBC se achar mais fácil.
