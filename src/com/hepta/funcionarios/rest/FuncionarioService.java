@@ -3,8 +3,6 @@ package com.hepta.funcionarios.rest;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,7 +11,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -25,20 +22,10 @@ import com.hepta.funcionarios.persistence.FuncionarioDAO;
 @Path("/funcionarios")
 public class FuncionarioService {
 
-    @Context
-    private HttpServletRequest request;
-
-    @Context
-    private HttpServletResponse response;
-
     private FuncionarioDAO dao;
 
     public FuncionarioService() {
         dao = new FuncionarioDAO();
-    }
-
-    protected void setRequest(HttpServletRequest request) {
-        this.request = request;
     }
 
     /**
@@ -47,12 +34,19 @@ public class FuncionarioService {
      * @param Funcionario: Novo Funcionario
      * @return response 200 (OK) - Conseguiu adicionar
      */
-    @Path("/")
+    @Path("/salvar")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @POST
-    public Response FuncionarioCreate(Funcionario Funcionario) {
-        return Response.status(Status.NOT_IMPLEMENTED).build();
+    public Response funcionarioCreate(Funcionario funcionario) {
+        try {
+            dao.save(funcionario);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return Response.status(Status.OK).build();
     }
 
     /**
@@ -60,18 +54,19 @@ public class FuncionarioService {
      * 
      * @return response 200 (OK) - Conseguiu listar
      */
-    @Path("/")
+    @Path("/listar")
     @Produces(MediaType.APPLICATION_JSON)
     @GET
-    public Response FuncionarioRead() {
-        List<Funcionario> Funcionarios = new ArrayList<>();
+    public Response funcionarioRead() {
+        List<Funcionario> funcionarios = new ArrayList<>();
         try {
-            Funcionarios = dao.getAll();
+            funcionarios = dao.getAll();
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Erro ao buscar Funcionarios").build();
         }
 
-        GenericEntity<List<Funcionario>> entity = new GenericEntity<List<Funcionario>>(Funcionarios) {
+        GenericEntity<List<Funcionario>> entity = new GenericEntity<List<Funcionario>>(funcionarios) {
         };
         return Response.status(Status.OK).entity(entity).build();
     }
@@ -83,21 +78,21 @@ public class FuncionarioService {
      * @param Funcionario: Funcionario atualizado
      * @return response 200 (OK) - Conseguiu atualizar
      */
-    @Path("/{id}")
+    @Path("/atualizar")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @PUT
-    public Response FuncionarioUpdate(@PathParam("id") Integer id, Funcionario Funcionario) {
+    public Response funcionarioUpdate(Funcionario funcionario) {
         return Response.status(Status.NOT_IMPLEMENTED).build();
     }
 
     /**
      * Remove um Funcionario
      * 
-     * @param id: id do Funcionario
+     * @param id: id do funcionario
      * @return response 200 (OK) - Conseguiu remover
      */
-    @Path("/{id}")
+    @Path("/deletar/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @DELETE
     public Response FuncionarioDelete(@PathParam("id") Integer id) {
@@ -106,12 +101,13 @@ public class FuncionarioService {
 
     /**
      * Métodos simples apenas para testar o REST
+     * 
      * @return
      */
     @Path("/teste")
     @Produces(MediaType.TEXT_PLAIN)
     @GET
-    public String TesteJersey() {
+    public String testeJersey() {
         return "Funcionando.";
     }
 

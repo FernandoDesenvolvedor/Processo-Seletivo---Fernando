@@ -11,10 +11,10 @@ var inicio = new Vue({
 	//Busca os itens para a lista da primeira página
         listarFuncionarios: function(){
 			const vm = this;
-			axios.get("/funcionarios/rest/funcionarios")
+			axios.get("/funcionarios/rest/funcionarios/listar")
 			.then(response => {vm.lista = response.data;
 			}).catch(function (error) {
-				vm.mostraAlertaErro("Erro interno", "Não foi possível listar natureza de serviços");
+				vm.mostraAlertaErro("Erro interno", "Não foi possível listar os itens");
 			}).finally(function() {
 			});
 		},

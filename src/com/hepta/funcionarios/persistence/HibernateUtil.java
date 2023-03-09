@@ -1,5 +1,7 @@
 package com.hepta.funcionarios.persistence;
 
+import java.util.Date;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -23,6 +25,7 @@ public class HibernateUtil {
 	}
 	
 	public static void createEntityManagerFactory(){
+	    System.out.println("Iniciando Hibernate: "+new Date());
 		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	}
 	
